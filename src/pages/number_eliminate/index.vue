@@ -32,6 +32,7 @@ export default {
     }
   },
   mounted () {
+    this.source = 0
     this.init()
   },
   methods: {
@@ -168,9 +169,11 @@ export default {
       })
     },
     init () {
+      let blockNumbers = {}
       for (let w = 0; w < this.blockCount * this.blockCount; w++) {
-        this.blockNumbers[w] = _.sample(this.initNumber)
+        blockNumbers[w] = _.sample(this.initNumber)
       }
+      this.blockNumbers = blockNumbers
       this.checkNearBlock()
       console.log(_.groupBy(this.blockNumbers))
     }
