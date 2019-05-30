@@ -177,6 +177,11 @@ export default {
       this.checkNearBlock()
       console.log(_.groupBy(this.blockNumbers))
     }
+  },
+  onShareAppMessage (res) {
+    return {
+      title: '简单怀旧小游戏集合,快来一起玩吧！'
+    }
   }
 }
 </script>

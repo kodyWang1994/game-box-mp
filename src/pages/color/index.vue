@@ -1,8 +1,8 @@
 <template>
   <div class="color-container">
     <div class="size-wrap">
-      <div>选择密度</div>
-      <div @click="selectSize(size * 10)" :class="'size-' + size" v-for="size in 5" :key="size">{{size * 10}}</div>
+      <div>选择关卡</div>
+      <div @click="selectSize(size * 10)" :class="'size-' + (size + 1)" v-for="size in 5" :key="size">{{size + 1}}</div>
     </div>
 
     <div class="step-wrap">
@@ -112,6 +112,7 @@ export default {
       return surroundBlock
     },
     selectSize (size) {
+      console.log(size)
       this.blockCount = size
       this.init()
     },
@@ -137,6 +138,11 @@ export default {
         blockColors[w] = _.sample(this.colors)
       }
       this.blockColors = blockColors
+    }
+  },
+  onShareAppMessage (res) {
+    return {
+      title: '简单怀旧小游戏集合,快来一起玩吧！'
     }
   }
 }
