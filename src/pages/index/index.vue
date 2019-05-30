@@ -2,15 +2,15 @@
   <div class="home-container">
     <div class="title">小游戏集合</div>
     <div class="menu-wrap">
-      <div href="index.html#/snake" class="menu-item">贪吃蛇</div>
-      <div href="index.html#/eliminate" class="menu-item">消消乐</div>
-      <div href="index.html#/pop-block" class="menu-item">消灭方块</div>
-      <div href="index.html#/drag-block" class="menu-item">拖动方块</div>
-      <div href="index.html#/color" class="menu-item">烧脑颜色</div>
-      <div href="index.html#/pictire" class="menu-item">拼图</div>
+      <!-- <div href="index.html#/snake" class="menu-item">贪吃蛇</div> -->
+      <!-- <div href="index.html#/eliminate" class="menu-item">消消乐</div> -->
+      <!-- <div href="index.html#/pop-block" class="menu-item">消灭方块</div> -->
+      <!-- <div href="index.html#/drag-block" class="menu-item">拖动方块</div> -->
+      <div @click="gotoPage('/pages/color/main')" class="menu-item">烧脑颜色</div>
+      <!-- <div href="index.html#/pictire" class="menu-item">拼图</div> -->
       <div @click="gotoPage('/pages/number_eliminate/main')" class="menu-item">数字消消乐</div>
-      <div href="index.html#/draw" class="menu-item">画板</div>
-      <div href="index.html#/date" class="menu-item">日历</div>
+      <!-- <div href="index.html#/draw" class="menu-item">画板</div> -->
+      <!-- <div href="index.html#/date" class="menu-item">日历</div> -->
     </div>
     <div class="abort-us">
       <!-- <a href="/abort-us">关于作品</a> -->

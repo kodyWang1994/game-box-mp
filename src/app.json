@@ -3,6 +3,7 @@
     "pages/index/main",
     "pages/logs/main",
     "pages/counter/main",
+    "pages/color/main",
     "pages/number_eliminate/main"
   ],
   "window": {
