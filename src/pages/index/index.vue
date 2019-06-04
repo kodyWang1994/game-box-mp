@@ -9,6 +9,7 @@
       <div @click="gotoPage('/pages/color/main')" class="menu-item">烧脑颜色</div>
       <!-- <div href="index.html#/pictire" class="menu-item">拼图</div> -->
       <div @click="gotoPage('/pages/number_eliminate/main')" class="menu-item">数字消消乐</div>
+      <div @click="gotoPage('/pages/picture/main')" class="menu-item">自定义拼图</div>
       <!-- <div href="index.html#/draw" class="menu-item">画板</div> -->
       <!-- <div href="index.html#/date" class="menu-item">日历</div> -->
     </div>

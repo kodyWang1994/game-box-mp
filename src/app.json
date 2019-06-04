@@ -4,6 +4,7 @@
     "pages/logs/main",
     "pages/counter/main",
     "pages/color/main",
+    "pages/picture/main",
     "pages/number_eliminate/main"
   ],
   "window": {

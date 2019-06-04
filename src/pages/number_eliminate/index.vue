@@ -80,7 +80,7 @@ export default {
         return
       } else if (xIndex === 0 && targetIndex % this.blockCount === 4) {
         return
-      } else if (targetIndex > (this.blockCount * this.blockCount) || targetIndex < 1) {
+      } else if (targetIndex > (this.blockCount * this.blockCount) || targetIndex < 0) {
         return
       }
 
@@ -91,6 +91,7 @@ export default {
 
       this.blockNumbers = blockNumbers
 
+      this.cleaning = true
       setTimeout(() => {
         this.checkNearBlock()
       }, 400)
@@ -138,7 +139,6 @@ export default {
     },
     cleanBlock (blocks) {
       console.log(blocks)
-      this.cleaning = true
       let currentIndex = blocks[0]
       let number = this.blockNumbers[currentIndex] + 1
       for (let index of blocks) {
