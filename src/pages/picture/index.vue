@@ -71,9 +71,15 @@ export default {
         count: 1,
         success: (res) => {
           console.log(res.tempFilePaths)
-          let tempSrc = res.tempFilePaths
-          this.imgSrc = tempSrc
-          this.imgList.push.apply(this.imgList, tempSrc)
+          wx.getImageInfo({
+            src: res.tempFilePaths[0],
+            success: (res) => {
+              console.log(res.path)
+              let tempSrc = res.path
+              this.imgSrc = tempSrc
+              this.imgList.push(tempSrc)
+            }
+          })
         }
       })
     },
