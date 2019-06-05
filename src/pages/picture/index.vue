@@ -70,15 +70,16 @@ export default {
   },
   methods: {
     uploadImage () {
-      wx.showLoading({
-        title: '上传中...',
-        mask: true
-      })
       wx.chooseImage({
         count: 1,
         success: (res) => {
           let tempFilePath = res.tempFilePaths[0]
           console.log(tempFilePath.match(/\.[^.]+?$/)[0])
+
+          wx.showLoading({
+            title: '上传中...',
+            mask: true
+          })
           wx.cloud.uploadFile({
             cloudPath: 'upload/bg_images/' + Date.parse(new Date()) + tempFilePath.match(/\.[^.]+?$/)[0],
             filePath: tempFilePath,
