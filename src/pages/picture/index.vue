@@ -70,6 +70,10 @@ export default {
   },
   methods: {
     uploadImage () {
+      wx.showLoading({
+        title: '上传中...',
+        mask: true
+      })
       wx.chooseImage({
         count: 1,
         success: (res) => {
@@ -87,17 +91,31 @@ export default {
                   let src = res.fileList[0].tempFileURL
                   this.imgSrc = src
                   this.imgList.push(src)
+                  wx.hideLoading()
                 },
                 fail: (e) => {
                   console.log(e)
+                  this.showError()
                 }
               })
             },
             fail: (e) => {
               console.log(e)
+              this.showError()
             }
           })
+        },
+        fail: (e) => {
+          console.log(e)
+          this.showError()
         }
+      })
+    },
+    showError () {
+      wx.showToast({
+        title: '上传失败',
+        icon: 'none',
+        duration: 2000
       })
     },
     selectSize (size) {
