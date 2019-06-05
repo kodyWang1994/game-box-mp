@@ -63,6 +63,9 @@ export default {
     }
   },
   created () {
+    wx.cloud.init({
+      env: 'dev-ffwjy'
+    })
     this.init()
   },
   methods: {
@@ -70,14 +73,28 @@ export default {
       wx.chooseImage({
         count: 1,
         success: (res) => {
-          console.log(res.tempFilePaths)
-          wx.getImageInfo({
-            src: res.tempFilePaths[0],
+          let tempFilePath = res.tempFilePaths[0]
+          console.log(tempFilePath.match(/\.[^.]+?$/)[0])
+          wx.cloud.uploadFile({
+            cloudPath: 'upload/bg_images/' + Date.parse(new Date()) + tempFilePath.match(/\.[^.]+?$/)[0],
+            filePath: tempFilePath,
             success: (res) => {
-              console.log(res.path)
-              let tempSrc = res.path
-              this.imgSrc = tempSrc
-              this.imgList.push(tempSrc)
+              console.log(res)
+              wx.cloud.getTempFileURL({
+                fileList: [res.fileID],
+                success: (res) => {
+                  console.log(res.fileList[0].tempFileURL)
+                  let src = res.fileList[0].tempFileURL
+                  this.imgSrc = src
+                  this.imgList.push(src)
+                },
+                fail: (e) => {
+                  console.log(e)
+                }
+              })
+            },
+            fail: (e) => {
+              console.log(e)
             }
           })
         }
