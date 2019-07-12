@@ -2,6 +2,10 @@
 
 > A Mpvue project
 
+# 微信小程序扫码体验
+
+![二维码](/static/game_qrcode.png)
+
 ## Build Setup
 
 ``` bash
