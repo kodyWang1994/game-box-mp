@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/logs/main",
-    "pages/counter/main",
     "pages/color/main",
     "pages/picture/main",
+    "pages/pop_block/main",
+    "pages/spider_card/main",
     "pages/number_eliminate/main"
   ],
   "window": {

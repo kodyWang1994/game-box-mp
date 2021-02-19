@@ -4,9 +4,10 @@
     <div class="menu-wrap">
       <!-- <div href="index.html#/snake" class="menu-item">贪吃蛇</div> -->
       <!-- <div href="index.html#/eliminate" class="menu-item">消消乐</div> -->
-      <!-- <div href="index.html#/pop-block" class="menu-item">消灭方块</div> -->
+      <div @click="gotoPage('/pages/pop_block/main')" class="menu-item">消灭方块</div>
       <!-- <div href="index.html#/drag-block" class="menu-item">拖动方块</div> -->
       <div @click="gotoPage('/pages/color/main')" class="menu-item">烧脑颜色</div>
+      <div @click="gotoPage('/pages/spider_card/main')" class="menu-item">蜘蛛卡牌</div>
       <!-- <div href="index.html#/pictire" class="menu-item">拼图</div> -->
       <div @click="gotoPage('/pages/number_eliminate/main')" class="menu-item">数字消消乐</div>
       <div @click="gotoPage('/pages/picture/main')" class="menu-item">自定义拼图</div>
