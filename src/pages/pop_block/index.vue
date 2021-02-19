@@ -1,15 +1,12 @@
 <template>
   <div class="container">
-    <canvas id="myCanvas" canvas-id="myCanvas" @click="click"></canvas>
+    <canvas id="myCanvas" style="height:320px;width:320px;" canvas-id="myCanvas" @click="click"></canvas>
     <div class="game-panel">
       <div>第{{ step }}关</div>
       <div>目标分数： {{targetSource}}</div>
       <div>当前分数： {{currentSource}}</div>
       <div class="tip font-20 padding-top-6" v-if="showTip">消除{{clearCount}}个，获得{{source}}分</div>
-    </div>
-
-    <div class="mask" v-if="showStepOverTip">
-      <div class="white font-22">剩余{{lessCount}}个，奖励{{stepOverSource}}分</div>
+      <div class="tip font-22 padding-top-6" v-if="showStepOverTip">剩余{{lessCount}}个，奖励{{stepOverSource}}分</div>
     </div>
 
     <div v-if="over" class="game-over">
@@ -59,6 +56,7 @@ export default {
       if (this.clearing) {
         return
       }
+      console.log(e)
       let x = parseInt((e.clientX - this.x) / 32)
       let y = parseInt(parseInt((e.clientY - this.y) / 32))
       if (x < 0 || x > 9 || y < 0 || y > 9) {
@@ -74,7 +72,7 @@ export default {
     },
     clean (needCleanBlock) {
       for (const key of needCleanBlock) {
-        this.ctx.clearRect(this.x + (parseInt(key % 10) * 32), this.y + (parseInt(key / 10) * 32), 30, 30)
+        this.ctx.clearRect(this.x + (parseInt(key % 10) * 32), 0 + (parseInt(key / 10) * 32), 30, 30)
         delete this.blockColors[key]
       }
       this.addSource(needCleanBlock)
@@ -92,7 +90,7 @@ export default {
       this.ctx.fillRect(0, 0, this.systemInfo.windowWidth, this.systemInfo.windowHeight)
 
       this.ctx.strokeStyle = '#ccc'
-      this.ctx.rect(this.x, this.y, 320, 320)
+      this.ctx.rect(0, 0, 320, 320)
       this.ctx.stroke()
 
       for (const i in _.range(10)) {
@@ -101,7 +99,7 @@ export default {
           if (_.has(this.blockColors, index)) {
             this.ctx.setFillStyle(this.blockColors[index])
             // this.blockColors[index] = this.ctx.fillStyle
-            this.ctx.fillRect(this.x + (j * 32), this.y + (i * 32), 30, 30)
+            this.ctx.fillRect(0 + (j * 32), 0 + (i * 32), 30, 30)
           }
         }
       }
@@ -133,13 +131,13 @@ export default {
               let color = this.blockColors[needDownIndex]
               this.blockColors[index] = color
               this.ctx.setFillStyle(color)
-              this.ctx.fillRect(this.x + (parseInt(index % 10) * 32), this.y + (parseInt(index / 10) * 32), 30, 30)
+              this.ctx.fillRect(0 + (parseInt(index % 10) * 32), 0 + (parseInt(index / 10) * 32), 30, 30)
             } else {
-              this.ctx.clearRect(this.x + (parseInt(index % 10) * 32), this.y + (parseInt(index / 10) * 32), 30, 30)
+              this.ctx.clearRect(0 + (parseInt(index % 10) * 32), 0 + (parseInt(index / 10) * 32), 30, 30)
               delete this.blockColors[index]
             }
           } else {
-            this.ctx.clearRect(this.x + (parseInt(index % 10) * 32), this.y + (parseInt(index / 10) * 32), 30, 30)
+            this.ctx.clearRect(0 + (parseInt(index % 10) * 32), 0 + (parseInt(index / 10) * 32), 30, 30)
             delete this.blockColors[index]
           }
         }
@@ -168,8 +166,8 @@ export default {
                 let lastIndex = colIndex - 1
                 this.blockColors[lastIndex] = color
                 this.ctx.setFillStyle(color)
-                this.ctx.fillRect(this.x + (parseInt(lastIndex % 10) * 32), this.y + (parseInt(lastIndex / 10) * 32), 30, 30)
-                this.ctx.clearRect(this.x + (parseInt(colIndex % 10) * 32), this.y + (parseInt(colIndex / 10) * 32), 30, 30)
+                this.ctx.fillRect(0 + (parseInt(lastIndex % 10) * 32), 0 + (parseInt(lastIndex / 10) * 32), 30, 30)
+                this.ctx.clearRect(0 + (parseInt(colIndex % 10) * 32), 0 + (parseInt(colIndex / 10) * 32), 30, 30)
                 delete this.blockColors[colIndex]
               }
             }
@@ -233,7 +231,7 @@ export default {
     },
     startGame () {
       this.ctx.strokeStyle = '#ccc'
-      this.ctx.rect(this.x, this.y, 320, 320)
+      this.ctx.rect(0, 0, 320, 320)
 
       for (const i in _.range(10)) {
         for (const j in _.range(10)) {
@@ -241,7 +239,7 @@ export default {
           let color = _.sample(this.colors)
           this.ctx.setFillStyle(color)
           this.blockColors[index] = color
-          this.ctx.fillRect(this.x + (j * 32), this.y + (i * 32), 30, 30)
+          this.ctx.fillRect(0 + (j * 32), 0 + (i * 32), 30, 30)
         }
       }
       this.ctx.stroke()
@@ -283,9 +281,10 @@ export default {
 <style scoped>
 .container {
   overflow: hidden;
-}
-
-#myCanvas {
+  background-color: #FFF8DC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100vw;
   height: 100vh;
 }
@@ -313,6 +312,7 @@ export default {
   left: 0;
   right: 0;
   text-align: center;
+  z-index: 100;
 }
 
 .tip {
