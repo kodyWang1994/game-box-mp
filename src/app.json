@@ -5,6 +5,7 @@
     "pages/picture/main",
     "pages/pop_block/main",
     "pages/spider_card/main",
+    "pages/about/main",
     "pages/number_eliminate/main"
   ],
   "window": {

@@ -16,7 +16,7 @@
     </div>
     <div class="abort-us">
       <!-- <a href="/abort-us">关于作品</a> -->
-      <a href="index.html#/abort-us">关于作品</a>
+      <div @click="gotoPage('/pages/about/main')">关于作品</div>
     </div>
   </div>
 </template>

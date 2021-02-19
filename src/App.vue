@@ -31,4 +31,7 @@ export default {
 </script>
 
 <style>
+page {
+  font-size: 15px;
+}
 </style>
