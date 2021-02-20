@@ -1,6 +1,6 @@
 <template>
   <div class="home-container">
-    <div class="title">小游戏集合</div>
+    <div class="title">小小方格</div>
     <div class="menu-wrap">
       <!-- <div href="index.html#/snake" class="menu-item">贪吃蛇</div> -->
       <!-- <div href="index.html#/eliminate" class="menu-item">消消乐</div> -->
