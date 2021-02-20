@@ -289,21 +289,14 @@ export default {
   height: 100vh;
 }
 
-.mask,
 .game-over {
   position: fixed;
-  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  padding: 30px 0;
   text-align: center;
   background-color: rgba(0, 0, 0, .5);
-}
-
-.mask {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .game-panel {
@@ -336,22 +329,16 @@ export default {
 }
 
 .over-text {
-  margin-top: 150px;
+  font-size: 25px;
   font-weight: bold;
-  animation: over-animation 2s linear .1s infinite alternate;
 }
 
 .restart {
-  margin-top: 30px;
+  margin-top: 25px;
   padding: 10px 15px;
   background-color: tomato;
   border-radius: 15px;
   display: inline-block;
   color: #fff;
-}
-
-@keyframes over-animation {
-  from {font-size: 15px;}
-  to {font-size: 25px;}
 }
 </style>
